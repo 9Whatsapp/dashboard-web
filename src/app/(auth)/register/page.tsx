@@ -27,8 +27,10 @@ export default function RegisterPage() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = { ...formData };
-    if (!payload.companyName) delete payload.companyName;
+    const payload: any = { ...formData };
+    if (!payload.companyName) {
+      delete payload.companyName;
+    }
 
     const res = await register(payload);
     if (res) {
