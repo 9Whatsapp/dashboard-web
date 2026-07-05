@@ -30,28 +30,28 @@ export interface AuthResponse {
 
 export const authService = {
   login: async (payload: LoginPayload): Promise<AuthResponse> => {
-    return fetchApi<AuthResponse>('/auth/login', {
+    return fetchApi<AuthResponse>('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
   },
 
   registerRequestOtp: async (payload: RegisterPayload): Promise<AuthResponse> => {
-    return fetchApi<AuthResponse>('/auth/register', {
+    return fetchApi<AuthResponse>('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
   },
 
   registerVerifyOtp: async (payload: VerifyOtpPayload): Promise<AuthResponse> => {
-    return fetchApi<AuthResponse>('/auth/register/verify-otp', {
+    return fetchApi<AuthResponse>('/api/auth/register/verify-otp', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
   },
 
   logout: async (): Promise<AuthResponse> => {
-    return fetchApi<AuthResponse>('/auth/logout', {
+    return fetchApi<AuthResponse>('/api/auth/logout', {
       method: 'POST',
     });
   },
