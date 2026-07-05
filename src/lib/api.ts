@@ -42,6 +42,11 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
       throw new ApiError(errorMessage, response.status, data);
     }
 
+    // Unwrap backend standard response format { success: true, data: { ... } }
+    if (isJson && data && typeof data === 'object' && 'success' in data && 'data' in data) {
+      return data.data as T;
+    }
+
     return data as T;
   } catch (error) {
     if (error instanceof ApiError) {
